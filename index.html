@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-сынып Информатика: HTML Тест</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef2f5;
+            color: #333;
+            margin: 0;
+            padding: 15px;
+        }
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .user-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e9ecef;
+        }
+        .user-info label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        .user-info input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 15px;
+            outline: none;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fafafa;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+        .question p {
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+        .option {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .option input {
+            margin-right: 8px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #219150;
+        }
+        button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        #status {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>11-сынып: Информатика тесті (HTML)</h1>
+    
+    <form id="quizForm" onsubmit="sendToTelegram(event)">
+        
+        <!-- Оқушы мәліметтері -->
+        <div class="user-info">
+            <label for="student_name">Оқушының аты-жөні:</label>
+            <input type="text" id="student_name" placeholder="Мысалы: Арман Қайратов" required>
+            
+            <label for="student_class">Сыныбы:</label>
+            <input type="text" id="student_class" placeholder="Мысалы: 11 'А'" required>
+        </div>
+
+        <!-- 1-сұрақ -->
+        <div class="question">
+            <p>1. HTML дегеніміз не?</p>
+            <label class="option"><input type="radio" name="q1" value="a" required> A) Hyper Text Markup Language</label>
+            <label class="option"><input type="radio" name="q1" value="b"> B) High Tech Modern Language</label>
+            <label class="option"><input type="radio" name="q1" value="c"> C) Hyper Transfer Text Language</label>
+        </div>
+
+        <!-- 2-сұрақ -->
+        <div class="question">
+            <p>2. Веб-беттің ең үлкен тақырыбын анықтайтын тег:</p>
+            <label class="option"><input type="radio" name="q2" value="a" required> A) &lt;head&gt;</label>
+            <label class="option"><input type="radio" name="q2" value="b"> B) &lt;h1&gt;</label>
+            <label class="option"><input type="radio" name="q2" value="c"> C) &lt;heading&gt;</label>
+        </div>
+
+        <!-- 3-сұрақ -->
+        <div class="question">
+            <p>3. Гиперсілтеме жасау тегі қандай?</p>
+            <label class="option"><input type="radio" name="q3" value="a" required> A) &lt;link&gt;</label>
+            <label class="option"><input type="radio" name="q3" value="b"> B) &lt;href&gt;</label>
+            <label class="option"><input type="radio" name="q3" value="c"> C) &lt;a&gt;</label>
+        </div>
+
+        <!-- 4-сұрақ -->
+        <div class="question">
+            <p>4. Сурет кірістіру тегі қандай?</p>
+            <label class="option"><input type="radio" name="q4" value="a" required> A) &lt;image&gt;</label>
+            <label class="option"><input type="radio" name="q4" value="b"> B) &lt;img&gt;</label>
+            <label class="option"><input type="radio" name="q4" value="c"> C) &lt;pic&gt;</label>
+        </div>
+
+        <!-- 5-сұрақ -->
+        <div class="question">
+            <p>5. Реттелмеген (маркерленген) тізім тегі:</p>
+            <label class="option"><input type="radio" name="q5" value="a" required> A) &lt;ol&gt;</label>
+            <label class="option"><input type="radio" name="q5" value="b"> B) &lt;ul&gt;</label>
+            <label class="option"><input type="radio" name="q5" value="c"> C) &lt;list&gt;</label>
+        </div>
+
+        <button type="submit" id="submitBtn">📩 Нәтижені жіберу</button>
+    </form>
+
+    <div id="status"></div>
+</div>
+
+<script>
+    async function sendToTelegram(event) {
+        event.preventDefault();
+
+        const btn = document.getElementById('submitBtn');
+        const status = document.getElementById('status');
+        
+        btn.disabled = true;
+        status.style.color = '#2c3e50';
+        status.innerText = "Жіберілуде...";
+
+        // Telegram Бот баптаулары
+        const token = "8651315317:AAFwxGlrL975ThHMeRU6qIk3sgc5oNuvBKw";
+        const chatId = "988664205";
+
+        // Дұрыс жауаптар
+        const correctAnswers = {
+            q1: 'a',
+            q2: 'b',
+            q3: 'c',
+            q4: 'b',
+            q5: 'b'
+        };
+
+        let score = 0;
+        let total = 5;
+
+        // Баллды есептеу
+        for (let key in correctAnswers) {
+            let selected = document.querySelector(`input[name="${key}"]:checked`);
+            if (selected && selected.value === correctAnswers[key]) {
+                score++;
+            }
+        }
+
+        const name = document.getElementById('student_name').value;
+        const studentClass = document.getElementById('student_class').value;
+        const percent = (score / total) * 100;
+
+        // Жіберілетін хабарлама мәтіні
+        const text = `📥 *ЖАҢА ТЕСТ НӘТИЖЕСІ*\n\n` +
+                     `👤 *Оқушы:* ${name}\n` +
+                     `🏫 *Сыныбы:* ${studentClass}\n` +
+                     `📊 *Нәтижесі:* ${score} / ${total} балл (${percent}%)`;
+
+        try {
+            const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: text,
+                    parse_mode: 'Markdown'
+                })
+            });
+
+            if (response.ok) {
+                status.style.color = 'green';
+                status.innerText = "Рахмет! Тест нәтижесі мұғалімге тікелей жіберілді.";
+                document.getElementById('quizForm').reset();
+            } else {
+                throw new Error("Жіберу мүмкін болмады");
+            }
+        } catch (error) {
+            status.style.color = 'red';
+            status.innerText = "Қате орын алды! Telegram-да @Yelshibekbot ботына /start батырмасын басқаныңызды тексеріңіз.";
+            btn.disabled = false;
+        }
+    }
+</script>
+
+</body>
+</html>
